@@ -58,7 +58,6 @@
   </header>
     <!-- Fin - Header -->
 
-    <!-- En tu archivo HTML de la página historial.html -->
 <div id="historialContainer"></div>
 
     <script>
@@ -68,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function mostrarHistorialVentas() {
   var historialVentas = JSON.parse(localStorage.getItem('historialVentas')) || [];
-  var historialContainer = document.getElementById('historialContainer'); // Asegúrate de tener un elemento en tu HTML con este ID
+  var historialContainer = document.getElementById('historialContainer');
 
   // Limpiar el contenido anterior en caso de actualizaciones
   historialContainer.innerHTML = '';
