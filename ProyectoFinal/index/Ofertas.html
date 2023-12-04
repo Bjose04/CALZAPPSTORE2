@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style2.css">
+
+    <!-- Agrega las referencias a los archivos de Bootstrap aquí -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container-flex">
+      <img src="imgs/Imagen2.png" alt="Logo" id="logo">    
+      <nav>
+        <ul>
+          <li></li>
+          <li>
+            <a href="Index.html">Inicio</a>
+          </li>
+          <li>
+            <div class="dropdown">
+              <a class="btn1" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Catálogo
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="Runnin.html">Running</a></li>
+                <li><a class="dropdown-item" href="CasualDeportivo.html">Casual Deportivo</a></li>
+                <li><a class="dropdown-item" href="Botas.html">Botas</a></li>
+                <li><a class="dropdown-item" href="Formal.html">Formal de Lujo</a></li>
+                <li><a class="dropdown-item" href="Sandalias.html">Sandalias</a></li>
+                <li><a class="dropdown-item" href="Botines.html">Botines</a></li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <a href="Más Vendidos.html">Más Vendidos</a>
+          </li>
+          <li>
+            <a href="Ofertas.html">Ofertas</a>
+          </li>
+          <li>
+            <a href="Inventario.html">Inventario</a>
+          </li>
+          <li>
+            <a href="Historial.html">Historial</a>
+          </li>
+          <li>
+            <a href="LIstaDeSeguimiento.html">Seguimiento de Producto</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <!-- Fin - Header -->
+
+  <!-- Ofertas -->
+  <div class="container mt-5">
+    <!-- Oferta de la Semana -->
+    <div class="oferta card text-center mx-auto" style="width: 30rem;">
+      <h2>Calzado Oferta de la Semana</h2>
+      <img class="oferta-img card-img-top" src="imgs/Imagen1.png" alt="Oferta de la Semana">
+      <div class="card-body">
+        <h3 class="card-title">Zapatos de Vestir con Bordado</h3>
+        <p class="card-text">Elegancia con detalles sofisticados.</p>
+        <p class="card-text precio-antes text-danger">Precio Antes: $170</p>
+        <p class="card-text precio-ahora text-success">Precio Ahora: $135</p>
+        <button class="btn btn-warning">Agregar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Agregar enlaces a los scripts de Bootstrap y jQuery -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,234 @@
+*, *::before, *::after {
+    box-sizing: inherit;
+  }
+  
+  .container {
+    margin: 0 auto;
+    max-width: 1100px;
+  }
+  
+  .container-flex {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 10px auto;
+    max-width: 1100px;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 20px;
+  }
+
+  #cuenta-carrito {
+    background-color: #ffffff;
+    border-radius: 10px;
+    color: #ff0000;
+  }
+    
+    header {
+      width: 100%;
+      margin: 0 auto;
+      padding: 10px 20px;
+      text-align: center;
+      align-items: center;
+      background-color: #db0000;    
+    }
+  
+    header img {
+      width: 200px;
+      border-radius: 10px;
+      background-color: white;
+    }
+  
+    img#logo {
+      width: 200px;
+      padding: 10px;
+      border-radius: 10px;
+      background-color: white;
+  }
+    
+    nav ul {
+      list-style: none;
+      display: flex;
+    }
+    
+    nav ul li {
+      margin-right: 10px;
+    }
+  
+    nav ul li a {
+      text-decoration: none;
+      color: #ffffff;
+      font-weight: bold;
+    }
+  
+    nav ul li a {
+      text-decoration: none;
+      color: #ffffff;
+      font-weight: bold;
+    }
+  
+    nav ul li a:hover {
+      color: #ff0000;
+      background-color: #ffffff;
+    }
+
+.contenedor {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    max-width: 1100px;
+    padding: 10px 20px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+    color: #000000;
+}
+
+.container-cards{
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0px auto;
+  max-width: 1100px;
+  align-items: center;
+  justify-content:space-evenly;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 300px;
+  margin: 10px;
+  border-radius: 10px;
+  background-color: #ffffff;
+  box-shadow: 0 0 10px #000000;
+}
+
+.card-footer {
+  display: inline;
+  font-size: 15px;
+  font-weight: bold;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  color: #000000;
+}
+
+.btnAgregar {
+  border-radius: 10px;
+  background-color: #db0000;
+  color: #ffffff;
+}
+
+.card-body {
+  text-align: center;
+}
+
+.card-price {
+  display: inline;
+  font-size: 30px;
+  font-weight: bold;
+  color: #1fb801;
+}
+
+.card-title {
+  font-size: 30px;
+  font-weight: bold;
+  color: #000000;
+}
+.btnSeguir {
+  border-radius: 10px;
+  background-color: #db0000;
+  color: #ffffff;
+}
+
+.card-body {
+  text-align: center;
+}
+
+.card-price {
+  display: inline;
+  font-size: 30px;
+  font-weight: bold;
+  color: #1fb801;
+}
+
+.card-title {
+  font-size: 30px;
+  font-weight: bold;
+  color: #000000;
+}
+
+/* Estilos para el modal */
+.modal{
+  display: none; /* Inicialmente oculto */
+  position: sticky;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 50%;
+  height: 50%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+}
+
+.modal-content {
+  max-width: 400px; /* Ajusta el ancho máximo según tus preferencias */
+  margin: 0 auto; /* Centra el modal en la pantalla */
+  padding: 20px;
+  background-color: #fff; /* Color de fondo del modal */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Sombra */
+  border-radius: 8px;
+}
+
+
+/* Estilo para el botón de cerrar */
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* Estilo para los elementos del carrito dentro del modal */
+.producto {
+  border-bottom: 1px solid #ddd; /* Línea divisoria entre productos */
+  padding: 10px 0;
+}
+
+.producto p {
+  margin: 0;
+}
+
+.producto button {
+  background-color: #ff0000; /* Color del botón de eliminar */
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.producto button:hover{
+  background-color: #b30000;
+} 
+
+/* Estilo para los botones en el modal */
+#vender,
+#borrarCarrito {
+  display: block;
+  margin-top: 15px;
+  padding: 10px;
+  background-color: #ff0000;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+#vender:hover,
+#borrarCarrito:hover {
+  background-color: #b30000;
+}
