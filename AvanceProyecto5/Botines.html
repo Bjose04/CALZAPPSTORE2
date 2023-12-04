@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="StyleR.css">
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  <title>Botines</title>  
+</head>
+<body>
+          <!-- Header -->
+  <header>
+    <div class="container-flex">
+      <img src="imgs\LOGO.png" alt="Logo" id="logo">    
+      <nav>
+        <ul>
+          <li>
+            <a href="Index.html">Inicio</a>
+          </li>
+          <li>
+          <div class="dropdown">
+            <a class="btn1" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Catálogo
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="Runnin.html">Running</a></li>
+              <li><a class="dropdown-item" href="CasualDeportivo.html">Casual Deportivo</a></li>
+              <li><a class="dropdown-item" href="Botas.html">Botas</a></li>
+              <li><a class="dropdown-item" href="Formal.html">Formal de Lujo</a></li>
+              <li><a class="dropdown-item" href="Sandalias.html">Sandalias</a></li>
+              <li><a class="dropdown-item" href="Botines.html">Botines</a></li>
+            </ul>
+          </div>
+          </li>
+        <li>
+            <a href="Más Vendidos.html">Más Vendidos</a>
+        </li>
+        <li>
+            <a href="Ofertas.html">Ofertas</a>
+        </li>
+        <li>
+            <a href="Inventario.html">Inventario</a>
+        </li>
+        <li>
+            <a href="Historial.html">Historial</a>
+        </li>
+        <li>
+            <a href="LIstaDeSeguimiento.html">Seguimiento del Producto</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="carrito">
+      <span id="cuenta-carrito">0</span>
+      <img src="imgs/CR.png" alt="Carrito" style="width: 35px; height: 30px;">
+    </div>
+  </div>
+  </header>
+    <!-- Fin - Header -->
+
+    <!-- Main -->
+    <main>
+        <section id="banner">
+                <div class="contenedor">
+                <h1>Botines</h1>
+                <p>Catálogo de Botines</p>
+            </div>    
+        </section>
+
+
+        <!-- CARDS -->
+      <div class="container-cards">
+        <div class="card">
+          <img src="imgs\BT1.png" class="card-img-top" alt="de Ante">
+          <div class="card-body">
+              <h4 class="card-title">Botines de Ante con Hebilla</h4>
+              <h5 class="card-price">$90</h5>
+              <p class="card-text">Diseño moderno para un look atrevido.</p>
+              <div class="card-footer">
+                <button class="btnAgregar">Agregar</button>
+                <button class="btnSeguir" onclick="seguirProducto('Botines de Ante con Hebilla', '$90', 'imgs\\BT1.png', 'Diseño moderno para un look atrevido.')">Seguir</button>
+
+              </div>
+              
+          </div>
+      </div>
+  
+      <div class="card">
+          <img src="imgs\BT2.png" class="card-img-top" alt="de Tacón Grueso">
+          <div class="card-body">
+              <h4 class="card-title">De Cueron con Tacón Grueso</h4>
+              <h5 class="card-price">$80</h5>
+              <p class="card-text">Botines con un estilo versátil y cómodo.</p>
+              <div class="card-footer">
+                <button class="btnAgregar">Agregar</button>
+                <button class="btnSeguir" onclick="seguirProducto('De Cueron con Tacón Grueso', '$80', 'imgs\\BT2.png', 'Botines con un estilo versátil y cómodo.')">Seguir</button>
+
+              </div>
+          </div>
+      </div>
+          </div>
+      </div>
+    </div>
+    <script>
+      function seguirProducto(nombre, precio, imagen, descripcion) {
+          let productosSeguidos = JSON.parse(localStorage.getItem('productosSeguidos')) || [];
+          let producto = { nombre, precio, imagen, descripcion };
+          productosSeguidos.push(producto);
+          localStorage.setItem('productosSeguidos', JSON.stringify(productosSeguidos));
+          alert('Producto añadido a la lista de seguimiento');
+      }
+  </script>
+    </script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        // Obtén el elemento del carrito
+        var carritoElemento = document.getElementById('carrito');
+    
+        // Obtén el carrito desde localStorage
+        var carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+    
+        // Actualiza el número en el carrito en el menú
+        actualizarCarrito();
+    
+        // Agrega un evento al hacer clic en el carrito para mostrar el contenido
+        carritoElemento.addEventListener('click', mostrarContenidoCarrito);
+    
+        // Agrega un evento al hacer clic en el botón para borrar el carrito
+        var botonBorrarCarrito = document.getElementById('borrarCarrito');
+        botonBorrarCarrito.addEventListener('click', borrarCarrito);
+    
+        // Función para actualizar el número en el carrito
+        function actualizarCarrito() {
+          document.getElementById('cuenta-carrito').innerText = carrito.length;
+        }
+    
+        function mostrarContenidoCarrito() {
+        var modal = document.getElementById('modalCarrito');
+        modal.style.display = 'block';
+    
+        var contenidoCarrito = document.getElementById('contenidoCarrito');
+        contenidoCarrito.innerHTML = ''; // Limpiar el contenido anterior del modal
+    
+        var total = 0; // Variable para almacenar el total de la venta
+    
+        // Recorrer el array 'carrito' para mostrar cada producto en el modal
+        carrito.forEach(function (producto, index) {
+          // Crear elementos para mostrar la información del producto
+          var productoDiv = document.createElement('div');
+          productoDiv.classList.add('producto');
+    
+          var nombreProducto = document.createElement('h3');
+          nombreProducto.textContent = producto.nombre;
+    
+          var precioProducto = document.createElement('p');
+          precioProducto.textContent = 'Precio: ' + producto.precio;
+    
+          // Botón de eliminación
+          var btnEliminar = document.createElement('button');
+          btnEliminar.textContent = 'Eliminar';
+          btnEliminar.addEventListener('click', function () {
+            eliminarProducto(index); // Llama a la función para eliminar el producto en este índice
+          });
+    
+          // Agregar los elementos al contenedor del producto
+          productoDiv.appendChild(nombreProducto);
+          productoDiv.appendChild(precioProducto);
+          productoDiv.appendChild(btnEliminar);
+    
+          // Agregar el contenedor del producto al contenido del modal
+          contenidoCarrito.appendChild(productoDiv);
+    
+          // Actualizar el total con el precio del producto actual
+          total += parseFloat(producto.precio.replace('$', ''));
+        });
+    
+        // Agregar el total al contenido del modal
+        var totalElemento = document.createElement('p');
+        totalElemento.textContent = 'Total de la venta: $' + total.toFixed(2);
+        contenidoCarrito.appendChild(totalElemento);
+    
+        var btnVender = document.getElementById('vender');
+        var btnBorrar = document.getElementById('borrarCarrito');
+    
+        if (carrito.length > 0) {
+          btnVender.style.display = 'block';
+          btnBorrar.style.display = 'block';
+        } else {
+          btnVender.style.display = 'none';
+          btnBorrar.style.display = 'none';
+        }
+    
+      }
+    
+      // Agrega un evento al botón para cerrar el modal al hacer clic en la "x"
+      var closeBtn = document.querySelector('.close');
+      closeBtn.addEventListener('click', function () {
+      var modal = document.getElementById('modalCarrito');
+      modal.style.display = 'none'; // Oculta el modal al hacer clic en la "x"
+    });
+        // Función para agregar un producto al carrito
+        function agregarAlCarrito(producto) {
+          carrito.push(producto);
+          localStorage.setItem('carrito', JSON.stringify(carrito));
+          actualizarCarrito();
+          alert('Producto añadido al carrito');
+    
+          // Actualiza el contenido del modal después de agregar un producto
+          llenarCarritoModal();
+        }
+    
+        function eliminarProducto(index) {
+      // Pregunta al usuario para confirmar la acción
+      var confirmacion = confirm('¿Estás seguro de que deseas eliminar este producto?');
+    
+      if (confirmacion) {
+        // Elimina el producto del carrito en el índice proporcionado
+        carrito.splice(index, 1);
+        localStorage.setItem('carrito', JSON.stringify(carrito));
+        mostrarContenidoCarrito(); // Actualiza el contenido del modal después de eliminar el producto
+        actualizarCarrito(); // Actualiza la visualización del número en el carrito
+        alert('Producto eliminado exitosamente.');
+      }
+    }
+    
+        function borrarCarrito() {
+        // Pregunta al usuario para confirmar la acción
+        var confirmacion = confirm('¿Estás seguro de que deseas borrar el carrito?');
+    
+        if (confirmacion) {
+        // Borra los datos del carrito
+        carrito = [];
+        localStorage.setItem('carrito', JSON.stringify(carrito));
+        actualizarCarrito();  // Actualiza la visualización del número en el carrito
+        llenarCarritoModal();  // Puedes llenar el modal o realizar otras acciones después de borrar el carrito
+        alert('Carrito borrado exitosamente.');
+      }
+    }
+    
+    function realizarVenta() {
+      // Pregunta al usuario para confirmar la acción
+      var confirmacion = confirm('¿Confirmas que la venta es correcta?');
+    
+      if (confirmacion) {
+        // Obtén los datos del carrito antes de borrarlos
+        var carritoParaHistorial = JSON.parse(localStorage.getItem('carrito')) || [];
+    
+        // Borrar los datos del carrito
+        carrito = [];
+        localStorage.setItem('carrito', JSON.stringify(carrito));
+        actualizarCarrito(); // Actualiza la visualización del número en el carrito
+        mostrarContenidoCarrito(); // Puedes llenar el modal o realizar otras acciones después de borrar el carrito
+        alert('Venta realizada exitosamente.');
+    
+        // Almacena temporalmente los datos del carrito en localStorage
+        localStorage.setItem('carritoParaHistorial', JSON.stringify(carritoParaHistorial));
+    
+        // Agrega la venta al historial
+        agregarVentaAlHistorial(carritoParaHistorial);
+    
+        // Redirige a historial.html
+        window.location.href = 'Historial.html';
+      }
+    }
+    
+    function agregarVentaAlHistorial(venta) {
+      var historialVentas = JSON.parse(localStorage.getItem('historialVentas')) || [];
+      historialVentas.push({ fecha: new Date().toLocaleDateString(), productos: venta });
+      localStorage.setItem('historialVentas', JSON.stringify(historialVentas));
+    }
+    
+    // Obtener el botón "Realizar venta" y el modal
+    var btnVender = document.getElementById('vender');
+    var modal = document.getElementById('modalCarrito');
+    
+    // Agregar evento de clic al botón "Realizar venta"
+    btnVender.addEventListener('click', function () {
+      // Aquí puedes enviar el contenido del carrito a historial.html
+      realizarVenta();
+    
+      // Cerrar el modal al realizar la venta
+      modal.style.display = "none";
+    });
+    
+    // Obtener el botón de borrar y el modal
+    var btnBorrar = document.getElementById("borrarCarrito");
+    var modal = document.getElementById("modalCarrito");
+    
+    // Agregar un evento de clic al botón de borrar
+    btnBorrar.addEventListener("click", function() {
+      // Aquí iría la lógica para borrar el contenido del carrito
+    
+      // Cerrar el modal al hacer clic en el botón de borrar
+      modal.style.display = "none";
+    });
+    
+        // Agrega la función agregarAlCarrito a los botones de "Agregar" en tus tarjetas
+        var botonesAgregar = document.querySelectorAll('.btnAgregar');
+        botonesAgregar.forEach(function (boton) {
+          boton.addEventListener('click', function () {
+            // Obtén el elemento padre con la clase 'card'
+            var card = boton.closest('.card');
+    
+            // Verifica si se encontró un elemento con la clase 'card'
+            if (card) {
+              var nombre = card.querySelector('.card-title').innerText;
+              var precio = card.querySelector('.card-price').innerText;
+              var imagen = card.querySelector('.card-img-top').src;
+              var descripcion = card.querySelector('.card-text').innerText;
+    
+              var producto = { nombre, precio, imagen, descripcion };
+    
+              agregarAlCarrito(producto);
+            } else {
+              console.error("No se pudo encontrar el elemento '.card' al hacer clic en el botón");
+            }
+    
+            var btnVender = document.getElementById('vender');
+          var btnBorrar = document.getElementById('borrarCarrito');
+    
+          if (carrito.length > 0) {
+            btnVender.style.display = 'block';
+            btnBorrar.style.display = 'block';
+          }
+          });
+        });
+      });
+    </script>
+    <div id="modalCarrito" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Contenido del carrito</h2>
+        <div id="contenidoCarrito">
+          <!-- Aquí se mostrará el contenido del carrito -->
+        </div>
+        <button id="vender">Realizar venta</button>
+        <button id="borrarCarrito">Borrar carrito</button>
+      </div>
+    </div>
+</body>

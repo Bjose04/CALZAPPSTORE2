@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="Style.css">
+  <script src="Index.js" defer></script>
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  <title>CalzaAppStore</title>  
+</head>
+<body>
+      <!-- Header -->
+  <header>
+    <div class="container-flex">
+      <img src="imgs\LOGO.png" alt="Logo" id="logo">    
+      <nav>
+        <ul>
+          <li>
+            <a href="Index.html">Inicio</a>
+          </li>
+          <li>
+          <div class="dropdown">
+            <a class="btn1" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Catálogo
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="Runnin.html">Running</a></li>
+              <li><a class="dropdown-item" href="CasualDeportivo.html">Casual Deportivo</a></li>
+              <li><a class="dropdown-item" href="Botas.html">Botas</a></li>
+              <li><a class="dropdown-item" href="Formal.html">Formal de Lujo</a></li>
+              <li><a class="dropdown-item" href="Sandalias.html">Sandalias</a></li>
+              <li><a class="dropdown-item" href="Botines.html">Botines</a></li>
+            </ul>
+          </div>
+          </li>
+        <li>
+            <a href="Más Vendidos.html">Más Vendidos</a>
+        </li>
+        <li>
+            <a href="Ofertas.html">Ofertas</a>
+        </li>
+        <li>
+            <a href="Inventario.html">Inventario</a>
+        </li>
+        <li>
+            <a href="Historial.html">Historial</a>
+        </li>
+        <li>
+          <a href="LIstaDeSeguimiento.html">Seguimiento del Producto</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+    <!-- Fin - Header -->
+
+    <!-- En tu archivo HTML de la página historial.html -->
+<div id="historialContainer"></div>
+
+    <script>
+document.addEventListener('DOMContentLoaded', function () {
+  mostrarHistorialVentas();
+});
+
+function mostrarHistorialVentas() {
+  var historialVentas = JSON.parse(localStorage.getItem('historialVentas')) || [];
+  var historialContainer = document.getElementById('historialContainer'); // Asegúrate de tener un elemento en tu HTML con este ID
+
+  // Limpiar el contenido anterior en caso de actualizaciones
+  historialContainer.innerHTML = '';
+
+  // Iterar sobre cada venta en el historial y mostrarla en el contenedor
+  historialVentas.forEach(function (venta, index) {
+    var ventaElemento = document.createElement('div');
+    ventaElemento.classList.add('venta');
+
+    var fechaElemento = document.createElement('p');
+    fechaElemento.classList.add('fecha');
+    fechaElemento.textContent = 'Fecha: ' + venta.fecha;
+
+    var productosElemento = document.createElement('ul');
+    productosElemento.classList.add('productos');
+    productosElemento.textContent = 'Productos: ';
+
+    var totalElemento = document.createElement('p');
+    totalElemento.classList.add('total');
+    totalElemento.textContent = 'Total: ' + calcularTotal(venta.productos);
+
+    // Iterar sobre cada producto en la venta y agregarlo a la lista
+    venta.productos.forEach(function (producto) {
+      var productoItem = document.createElement('li');
+      productoItem.textContent = `${producto.nombre} - Precio: ${producto.precio}`;
+      productosElemento.appendChild(productoItem);
+    });
+
+    ventaElemento.appendChild(fechaElemento);
+    ventaElemento.appendChild(productosElemento);
+    ventaElemento.appendChild(totalElemento);
+
+    // Agregar el elemento de venta al contenedor
+    historialContainer.appendChild(ventaElemento);
+  });
+}
+
+function mostrarBotonVaciar() {
+  var historialVentas = JSON.parse(localStorage.getItem('historialVentas')) || [];
+  var botonVaciar = document.getElementById('vaciarHistorial');
+
+  // Si hay elementos en el historial, muestra el botón, de lo contrario, ocúltalo
+  botonVaciar.style.display = historialVentas.length > 0 ? 'block' : 'none';
+}
+
+// Llama a esta función después de mostrar el historial
+mostrarBotonVaciar();
+
+function calcularTotal(productos) {
+  var total = 0;
+  productos.forEach(function (producto) {
+    // Extraer el valor numérico del precio y sumarlo al total
+    total += parseFloat(producto.precio.replace('$', ''));
+  });
+  return '$' + total.toFixed(2); // Devolver el total formateado como string
+}
+
+function vaciarHistorial() {
+  // Pregunta al usuario para confirmar la acción
+  var confirmacion = confirm('¿Estás seguro de que deseas vaciar el historial de ventas?');
+
+  if (confirmacion) {
+    // Borra los datos del historial de ventas
+    var historialVentas = [];
+    localStorage.setItem('historialVentas', JSON.stringify(historialVentas));
+    // Actualiza la visualización del historial
+    mostrarHistorialVentas();
+    // Muestra u oculta el botón según el estado del historial
+    mostrarBotonVaciar();
+    alert('Historial de ventas vaciado exitosamente.');
+  }
+}
+    </script>
+<div class="boton-container">
+  <button id="vaciarHistorial" class="boton-vaciar" onclick="vaciarHistorial()">Vaciar historial de ventas</button>
+</div>
+
+
+
